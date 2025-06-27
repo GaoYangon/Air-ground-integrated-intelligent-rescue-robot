@@ -1,0 +1,11 @@
+# ROS2特定忽略
+build/
+install/
+log/
+
+# 通用忽略
+*.swp
+*.bak
+*~
+.DS_Store
+.vscode/
