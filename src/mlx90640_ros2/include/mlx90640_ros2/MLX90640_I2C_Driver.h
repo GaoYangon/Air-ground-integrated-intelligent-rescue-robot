@@ -14,10 +14,15 @@
  * limitations under the License.
  *
  */
+// MLX90640_I2C_Driver.h
+extern int i2c_fd;  // 声明全局文件描述符
+
 #ifndef _MLX90640_I2C_Driver_H_
 #define _MLX90640_I2C_Driver_H_
-
+// 添加I2C地址定义
+#define MLX_I2C_ADDR 0x33
 #include <stdint.h>
+
 
     void MLX90640_I2CInit(void);
     int MLX90640_I2CGeneralReset(void);

@@ -18,6 +18,10 @@
 #define _MLX90640_API_H_
 
 #define SCALEALPHA 0.000001
+
+// 在 MLX90640_API.h 中添加（若缺失）
+void MLX90640_Shutdown(void);
+
     
 typedef struct
     {

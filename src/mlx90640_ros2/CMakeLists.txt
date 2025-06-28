@@ -16,6 +16,7 @@ find_package(OpenCV REQUIRED)
 # 添加头文件路径
 include_directories(
   include
+  ${PROJECT_NAME}
   ${OpenCV_INCLUDE_DIRS}
 )
 

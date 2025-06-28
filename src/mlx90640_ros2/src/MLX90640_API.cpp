@@ -14,9 +14,11 @@
  * limitations under the License.
  *
  */
-#include "mlx90640MLX90640_I2C_Driver.h"
-#include "MLX90640_API.h"
+#include "mlx90640_ros2/MLX90640_I2C_Driver.h"
+#include "mlx90640_ros2/MLX90640_API.h"
 #include <math.h>
+#include <unistd.h>  // 包含close函数声明
+
 
 void ExtractVDDParameters(uint16_t *eeData, paramsMLX90640 *mlx90640);
 void ExtractPTATParameters(uint16_t *eeData, paramsMLX90640 *mlx90640);
@@ -38,6 +40,12 @@ int IsPixelBad(uint16_t pixel,paramsMLX90640 *params);
 int ValidateFrameData(uint16_t *frameData);
 int ValidateAuxData(uint16_t *auxData);
   
+// MLX90640_API.cpp 中应包含
+void MLX90640_Shutdown(void) {
+    // 释放I2C资源
+    close(i2c_fd);
+}
+
 int MLX90640_DumpEE(uint8_t slaveAddr, uint16_t *eeData)
 {
      return MLX90640_I2CRead(slaveAddr, 0x2400, 832, eeData);

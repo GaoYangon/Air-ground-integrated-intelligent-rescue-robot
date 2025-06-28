@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-#include "MLX90640_I2C_Driver.h"
+#include "mlx90640_ros2/MLX90640_I2C_Driver.h"
 #include <iostream>
 #include <unistd.h>
 #include <stdio.h>
@@ -33,9 +33,22 @@
 int i2c_fd = 0;
 const char *i2c_device = "/dev/i2c-4";
 
-void MLX90640_I2CInit()
-{
-
+// 初始化I2C总线并设置从设备地址
+void MLX90640_I2CInit(void) {
+    char filename[40];
+    sprintf(filename, "/dev/i2c-%d", 4);  // 使用总线号4（根据实际修改）
+    i2c_fd = open(filename, O_RDWR);
+    
+    if (i2c_fd < 0) {
+        perror("Failed to open I2C bus");
+        exit(1);
+    }
+    
+    // 设置I2C从设备地址
+    if (ioctl(i2c_fd, I2C_SLAVE, MLX_I2C_ADDR) < 0) {
+        perror("Failed to set I2C slave address");
+        exit(1);
+    }
 }
 
 int MLX90640_I2CRead(uint8_t slaveAddr, uint16_t startAddress, uint16_t nMemAddressRead, uint16_t *data)
