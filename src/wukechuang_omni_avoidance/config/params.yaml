@@ -1,0 +1,24 @@
+# 障碍物检测参数（单位：米）
+obstacle:
+  ground_max_height: 0.3  # 地面可通过的最大障碍物高度（可修改）
+  safety_distance: 0.5    # 安全避障距离（可修改）
+
+# 机器人参数（单位：米）
+robot:
+  width: 0.4  # 机器人宽度（根据实际尺寸修改）
+
+# 飞行模式参数
+flight:
+  takeoff_height: 0.8  # 起飞高度（需高于障碍物）
+  cross_distance: 1.5  # 跨越障碍物的前进距离
+
+# 速度参数（单位：m/s或rad/s）
+velocity:
+  ground_max_linear: 0.3  # 地面最大线速度
+  ground_max_angular: 0.5 # 地面最大角速度
+  flight_max_linear: 0.3  # 飞行最大线速度
+
+# 热成像参数
+thermal:
+  light_threshold: 30  # 低光环境判断阈值（亮度值）
+

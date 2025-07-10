@@ -58,12 +58,12 @@ int main(int argc, char *argv[]) {
 
   //////////////////////int property/////////////////
   /// lidar baudrate
-  int optval = 230400;
+  int optval = 512000;
   node->declare_parameter("baudrate", optval);
   node->get_parameter("baudrate", optval);
   laser.setlidaropt(LidarPropSerialBaudrate, &optval, sizeof(int));
   /// tof lidar
-  optval = TYPE_TRIANGLE;
+  optval = TYPE_TOF;
   node->declare_parameter("lidar_type", optval);
   node->get_parameter("lidar_type", optval);
   laser.setlidaropt(LidarPropLidarType, &optval, sizeof(int));
@@ -141,7 +141,7 @@ int main(int argc, char *argv[]) {
   node->get_parameter("angle_min", f_optvalue);
   laser.setlidaropt(LidarPropMinAngle, &f_optvalue, sizeof(float));
   /// unit: m
-  f_optvalue = 64.f;
+  f_optvalue = 32.f;
   node->declare_parameter("range_max", f_optvalue);
   node->get_parameter("range_max", f_optvalue);
   laser.setlidaropt(LidarPropMaxRange, &f_optvalue, sizeof(float));
@@ -150,7 +150,7 @@ int main(int argc, char *argv[]) {
   node->get_parameter("range_min", f_optvalue);
   laser.setlidaropt(LidarPropMinRange, &f_optvalue, sizeof(float));
   /// unit: Hz
-  f_optvalue = 10.f;
+  f_optvalue = 7.f;
   node->declare_parameter("frequency", f_optvalue);
   node->get_parameter("frequency", f_optvalue);
   laser.setlidaropt(LidarPropScanFrequency, &f_optvalue, sizeof(float));
